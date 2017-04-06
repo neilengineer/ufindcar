@@ -1,0 +1,168 @@
+<!-- main content -->
+{% extends "base.html" %}
+{% block content %}
+<div id="left-sidebar" class="col-sm-2 sidenav" style="text-align:left;border:0px solid black;">
+    <p><strong>1) Select Data Source</strong></p>
+    <form action="/" method="POST">
+        <p>
+          <select name="data_source" id="js_data_source" onchange="javascript: form.submit();">
+          {% for a_coll in all_colls %}
+              <option value="{{ a_coll }}" {% if a_coll == current_coll_str %} selected="True"{% endif %}>{{ a_coll }}</option>
+          {% endfor %}
+          </select>
+        </p>
+        <p>Number of cars to show:</p>
+        <script>
+            function query_click(range_from_link) {
+                var base_url="http://www.ufindcar.com/?query_num=";
+                var myselect = document.getElementById("js_data_source");
+                var cur_select = myselect.options[myselect.selectedIndex].text;
+                window.location = base_url+range_from_link+'&data_source='+cur_select;
+            }
+        </script>
+        <p>
+            <a href="javascript:query_click('0-100');">100</a>
+            <a href="javascript:query_click('0-200');">200</a>
+            <a href="javascript:query_click('0-400');">400</a>
+            <a href="javascript:query_click('0-600');">600</a>
+            <a href="javascript:query_click('0-100000');">all</a>
+        </p>
+        <!--
+        <p>Or give another number e.g. 500</p>
+        <div class="input-group" style="width:90%;">
+           <input onfocus="if (this.value=='number/range') this.value = ''" type="text" class="form-control" name="query_num" value="number/range" >
+           <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">submit</button>
+           </span>
+        </div> 
+        -->
+        <p>Know better source? <a href="http://www.ufindcar.com/contact"><b>Tell Us</b></a></p>
+    </form>
+    <hr>
+    <p><strong>2) Select Filters</strong></p>
+    <p><div id="sortby_price"></div></p>
+    <p><div id="sortby_mileage"></div></p>
+    <p><div id="sortby_make"></div></p>
+    <p><div id="sortby_year"></div></p>
+    <p><div id="sortby_type"></div></p>
+    <p><div id="sortby_area"></div></p>
+    <p><div id="sortby_title"></div></p>
+    <p><div id="reset_filter_div"></div></p>
+    <p>Want change filter? <a href="http://www.ufindcar.com/contact"><b>Tell Us</b></a></p>
+</div>  <!--left-sidebar-->
+
+<div class="col-sm-9 text-center" style="border:0px solid black;">
+    <h4><b>Ufindcar.com Price-Mileage Coordinate System</b></h4>
+    <h6>Move mouse over & follow the link to original websites!</h6>
+    <div id="ufindcar_show" style=""></div>
+    <script type="text/javascript">
+        {% include "show_ufindcar.js" %}
+        var mydataset = {{ ufindcar_data|safe }};
+        var data_src = '{{ current_coll }}';
+        var show_car_num = '{{show_car_num}}';
+
+        show_ufindcar();
+    </script>
+    <div class="row">
+        <div class="col-lg-12">
+        <p>
+<h5><b>Data Ranges</b>: Date &lt; 2 Days | Price &lt; 30k USD | Mileage &lt; 150k Miles | Year &gt; Year 2000 | Only supports SF bay area(for now).</h5>
+        </p>
+        </div>
+    </div>
+</div> <!--middle block-->
+
+<div class="col-sm-1 sidenav" style="border:0px solid black;padding: 3% 0 0 0 !important; margin:0 !important;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-car fa-2x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="tiny">Cars Shown</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small" id="num_car_shown">{{ show_car_num }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-red">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-list fa-2x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="tiny">Cars Total</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small">{{coll_total_num_24}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-arrows-h fa-2x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="tiny">Query Range</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small">{{ query_range_str }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-red">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-at fa-2x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="tiny">Data Source</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small">{{ current_coll_str }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-calendar fa-2x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="tiny">Date Updated</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small">{{last_update_date}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-red">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <i class="fa fa-history fa-2x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="tiny">Time Updated</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small">{{last_update_time}}(PST)</div>
+            </div>
+        </div>
+    </div>
+</div>  <!--right-sidebar-->
+
+{% endblock %}

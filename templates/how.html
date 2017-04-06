@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="row">
+        <h2><b>How does ufindcar.com work?</b></h2>
+    </div>
+	<a  name="services"></a>
+    <div class="content-section-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">What You Do</h2>
+                    <p class="lead" style="text-align:left;">
+                        1) Go to <a href="http://www.ufindcar.com">ufindcar.com</a>,spot the best deal.<br>
+                        2) Move mouse over & follow the link appeared!<br> 
+                        <h5>*Advanced options to select data source, number of cars to show, and a lot of filters available on the left sidebar to help you.</h5>
+                    </p>
+                </div>
+                <div class="col-sm-5 col-sm-offset-2 col-sm-6">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/how-1-youdo.jpg') }}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">What We do</h2>
+                    <p class="lead" style="text-align:left;">
+                        1) Collect valuable data from the Web.<br>
+                        2) Validate, process and save the data.<br>
+                        3) Display the selected ones.
+                    </p>
+                </div>
+                <div class="col-sm-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/how-2-wedo.jpg') }}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Ranges</h2>
+                    <p class="lead" style="text-align:left;">
+                        When collecting data, we have following ranges:<br>
+                       *) Price range: &lt; 30000 USD <br>
+                       *) Mileage range:&lt; 150000 miles <br>
+                       *) Model year: &gt; Year 2000 <br>
+                       *) Available date: &lt; 2 days <br>
+                        *Only supports San Francisco bay area (for now)
+                    </p>
+                </div>
+                <div class="col-sm-5 col-sm-offset-2 col-sm-6">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/how-3-range-limit.jpg') }}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Filter And Display</h2>
+                    <p class="lead" style="text-align:left;">
+                        When displaying the car information collected, the datum will be sorted by price and mileage.<br><br>
+                        By default, the lowest(top) 100 cars will be displayed. You can specify how many cars to show from the left toolbar.<br><br>
+                        Enjoy car hunting!<br>
+                        Have question or feedback?&nbsp; <a href="http://www.ufindcar.com/contact" target="_blank">Contact Us</a>.
+                    </p>
+                </div>
+                <div class="col-sm-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/how-4-filter.jpg') }}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+{% endblock %}

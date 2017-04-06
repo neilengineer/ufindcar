@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Find Best Used Car Deals|Quick,Easy,Fun|Big Inventory|Used SUV & Truck & Car</title>
+  <meta name="description" content="What car to buy? Find best used car deals with lowest price & lowest mileage at ufindcar.com. It's quick,easy,fun like a game. Biggest used car sales. Ford,toyota,honda,nissan,chevrolet,dodge,volkswagen,lexus,mazda,tesla,mercedes-benz,subaru,jeep,ram,gmc.">
+  <meta name="author" content="ufindcar.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/d3.js') }}"></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: auto;}
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+/*      background-color: #f1f1f1; */
+      height: 100%;
+    }
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+
+<body style="background: #dae5ff !important;">
+    <nav class="navbar navbar-inverse" style="height:50px; background-color:transparent;border:0px solid black;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="http://www.ufindcar.com">
+             <img src="{{ url_for('static', filename='img/ufindcar-logo-100x100.png') }}" alt="ufindcar.com" style="width:50px;height:50px;">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="http://www.ufindcar.com">Find Car</a></li>
+            <li><a href="http://www.ufindcar.com/how">How Does It Work?</a></li>
+            <li><a href="http://www.ufindcar.com/about">About Us</a></li>
+            <li><a href="http://www.ufindcar.com/contact">Contact Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+                <li><h4>Share:</h4></li>
+                <li><div class="addthis_sharing_toolbox"></div></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid text-center" style="border:0px solid black;">
+      <div class="row content">
+        <!-- main content -->
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="container-fluid text-center" style="border:0px solid black;">
+        <p>
+        Disclaimer: 1) Our site, services and data are provided “as is” with no warranty, use at your own risks. 2) Copyrights of all collected data belong to corresponding owners.<br>
+        Ufindcar.com is a non-profit website, aiming to show useful information in a free, easy, fun way. Ufindcar.com is on car buyers' side.<br>
+        To report a copyright infringement, please <a href="http://www.ufindcar.com/contact">Contact Us</a>, we will take appropriate action, cheers!  @2016 <a href="http://www.ufindcar.com/contact">ufindcar.com</a>
+        </p>
+    </footer>
+
+    <!--addthis share&follow tools-->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5634210d148b1d38" async="async"></script>
+
+</body>
+
